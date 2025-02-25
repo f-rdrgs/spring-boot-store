@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres
+    container_name: spring-store-db
+    restart: always
+    volumes:
+      - ./spring-boot-store.sql:/docker-entrypoint-initdb.d/spring-boot-store.sql
+      - pgdata:/var/lib/postgresql/data 
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: testest
+      POSTGRES_DB: spring-store
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+volumes:
+  pgdata:
