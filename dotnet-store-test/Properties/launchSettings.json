@@ -1,38 +1,32 @@
 {
-  "$schema": "http://json.schemastore.org/launchsettings.json",
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:34706",
-      "sslPort": 44313
-    }
-  },
   "profiles": {
     "http": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:5245",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5125"
     },
     "https": {
       "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
       "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:7130;http://localhost:5245",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      "applicationUrl": "https://localhost:7158;http://localhost:5125"
     },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
+    "WSL": {
+      "commandName": "WSL2",
+      "launchUrl": "https://localhost:7158",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:7158;http://localhost:5125"
+      },
+      "workingDirectory": "/home/bready/random_projects/spring-boot-store/dotnet-store-test/",
+      "executablePath": "/home/bready/random_projects/spring-boot-store/dotnet-store-test/bin/Debug/net9.0/dotnet-store-test.dll",
+      "distributionName": "Ubuntu"
     }
-  }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json"
 }
