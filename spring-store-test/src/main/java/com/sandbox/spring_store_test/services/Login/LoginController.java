@@ -17,7 +17,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.sandbox.spring_store_test.configs.LoginConfigProperties;
-import com.sandbox.spring_store_test.repositories.models.User;
+import com.sandbox.spring_store_test.repositories.models.Users;
 import com.sandbox.spring_store_test.services.UserService;
 import com.sandbox.spring_store_test.services.Utils;
 import com.sandbox.spring_store_test.services.Login.LoginData.JWTData;
@@ -51,7 +51,7 @@ public class LoginController {
 
         decodedJWT = verifier.verify(data.token());
         
-        return new ResponseEntity<LoginData.JWTData>(data,HttpStatus.OK);
+        return new ResponseEntity<LoginData.JWTData>(new JWTData(data.token(), decodedJWT.getClaims().toString()) ,HttpStatus.OK);
     }
         catch (JWTVerificationException e){
             System.out.printf("Error while verifying JWT: %s",e);
@@ -62,13 +62,13 @@ public class LoginController {
     @PostMapping("/register")
     public ResponseEntity<LoginData.JWTData> Register(@Valid @RequestBody LoginData data) {
         
-        JWTData response = userService.createUser(new User(data.email(),data.password()));
+        JWTData response = userService.createUser(new Users(data.username(),data.email(),data.password()));
         return new ResponseEntity<LoginData.JWTData>(response,(!response.token().equals("") ? HttpStatus.OK : HttpStatus.BAD_REQUEST));
     }
     
     @DeleteMapping("/delete/{email}")
     public boolean deleteUser(@PathVariable("email") String email){
-        return userService.deleteUser(new User(email));
+        return userService.deleteUser(new Users(email));
     }
     @GetMapping("/jwt-get")
     public ResponseEntity<LoginData.JWTData> GetJwt(){
@@ -80,13 +80,13 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginData.JWTData> login(@RequestBody LoginData data) {
-        User user = new User(data.email(),data.password());
+        Users user = new Users(data.email(),data.password());
         System.out.println(user.password());
         boolean passwordValid = userService.verifyPassword(user);
     
         if(!passwordValid){
             System.out.println("Password invalid");
-            return new ResponseEntity<LoginData.JWTData>(new LoginData.JWTData(""),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<LoginData.JWTData>(new LoginData.JWTData("",""),HttpStatus.BAD_REQUEST);
         }
 
         LoginData.JWTData JWT = userService.emitLoginJWT(userService.findUserFromMailOrID(user));

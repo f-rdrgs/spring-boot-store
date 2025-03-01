@@ -31,7 +31,6 @@
 		<skipTests>true</skipTests>
 	</properties>
 	<dependencies>
-
 		<!-- https://mvnrepository.com/artifact/at.favre.lib/bcrypt -->
 		<dependency>
 			<groupId>at.favre.lib</groupId>

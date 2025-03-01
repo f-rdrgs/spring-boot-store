@@ -1,15 +1,16 @@
+-- Password is securepassword123
 INSERT INTO "users" ("username", "email", "password")
-VALUES ('john', 'john@example.com', 'securepassword123')
+VALUES ('john', 'john@example.com', '$2a$12$IuL7TUCG.6cVpHbdm1/I3.n4.s7o/IdO7k6eLDjuyZOOldubE5yM2')
 ON CONFLICT ("email")
 DO NOTHING;
 
 INSERT INTO "users" ("username", "email", "password")
-VALUES ('john_doe', 'john2@example.com', 'securepassword123')
+VALUES ('john_doe', 'john2@example.com', '$2a$12$IuL7TUCG.6cVpHbdm1/I3.n4.s7o/IdO7k6eLDjuyZOOldubE5yM2')
 ON CONFLICT ("email")
 DO NOTHING;
 
 INSERT INTO "users" ("username", "email", "password")
-VALUES ('john_doeee', 'john3@example.com', 'securepassword123')
+VALUES ('john_doeee', 'john3@example.com', '$2a$12$IuL7TUCG.6cVpHbdm1/I3.n4.s7o/IdO7k6eLDjuyZOOldubE5yM2')
 ON CONFLICT ("email")
 DO NOTHING;
 

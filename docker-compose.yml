@@ -1,8 +1,20 @@
 services:
-  vault:
-    container_name: "spring-vault"
-    image: hashicorp/vault:latest
-    environment:
-      VAULT_DEV_ROOT_TOKEN_ID: "00000000-0000-0000-0000-000000000000"
-    ports:
-      - "8200:8200"
+  db:
+    extends:
+      file: ./db/db-docker-compose.yml
+      service: db
+  adminer:
+    extends:
+      file: ./db/db-docker-compose.yml
+      service: adminer
+  # vault:
+  #   container_name: "spring-vault"
+  #   image: hashicorp/vault:latest
+  #   environment:
+  #     VAULT_DEV_ROOT_TOKEN_ID: "00000000-0000-0000-0000-000000000000"
+  #   ports:
+  #     - "8200:8200"
+
+volumes:
+  db_pgdata:
+    external: true

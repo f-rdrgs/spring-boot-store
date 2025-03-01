@@ -1,13 +1,11 @@
 package com.sandbox.spring_store_test.services;
 
-import java.util.Base64;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.sandbox.spring_store_test.configs.LoginConfigProperties;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import at.favre.lib.crypto.bcrypt.BCrypt.Version;
 
 
 public class Utils {
