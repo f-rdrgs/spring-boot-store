@@ -34,7 +34,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWTToken))
     };
 });
+
 builder.Services.AddSingleton<JWTHandler>();
+builder.Services.AddSingleton<LoginTools>();
 
 
 builder.Services.AddEndpointsApiExplorer();
