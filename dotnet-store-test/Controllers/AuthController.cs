@@ -4,10 +4,12 @@ using dotnet_store_test.Database.Models;
 using dotnet_store_test.Models.Auth_DTO;
 using dotnet_store_test.Tools;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace dotnet_store_test.Controllers
 {
     [Route("api/[controller]")]
+    [EnableRateLimiting("fixed")]
     [ApiController]
     public class AuthController(SpringStoreContext context, JWTHandler jwtHandler, LoginTools loginTools) : ControllerBase
     {
