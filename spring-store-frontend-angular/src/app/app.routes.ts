@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { MainComponent } from './features/main/main.component';
 import { LoginComponent } from './features/auth/login/login.component';
 
+// DO LAZY LOADING, OTHERWISE ALL PAGES ARE LOADED
 
 export const AppRoutes: Routes = [
     {
@@ -10,9 +11,9 @@ export const AppRoutes: Routes = [
         component: MainComponent
     },
     {
-        path:'auth/login',
         title:'Login page',
-        component: LoginComponent
+        component: LoginComponent,
+        path:'auth/login',
     },
     {
         path:'**',
@@ -20,5 +21,6 @@ export const AppRoutes: Routes = [
         title:'Random page',
         pathMatch:'full',
         component: MainComponent
-    }
+    },
+
 ]
